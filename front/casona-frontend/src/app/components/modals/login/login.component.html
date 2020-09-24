@@ -1,0 +1,48 @@
+<script src="angular-input-masks-standalone.min.js"></script>
+<form [formGroup]="userForm">
+  <div class="signin-block">
+    <a href="javascript:void(0);" class="close-modal" (click)="close()">
+      <img src="../../../../assets/images/close-icon.svg" class="img-fluid" alt="">
+    </a>
+    <img src="../../../../assets/images/login/bg-login.png" class="img-fluid login-bg" alt="">
+    <div class="form-group">
+      <input formControlName="email" type="text" class="form-control" id="email" placeholder="E-mail" pInputText>
+    </div>
+    <div class="form-group sh-password">
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="password" pInputText>
+      <a href="javascript:void(0);"><i class="fa fa-eye"></i></a>
+    </div>
+    <div class="text-right">
+      <a href="javascript:void(0);" (click)="openForgotPassword()">Recuperar contraseña</a>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary my-4" (click)="getListUser()">Ingresar</button>
+      <div>¿Aún no tienes cuenta? <a href="javascript:void(0);" (click)="openRegister()">Regístrate</a>
+      </div>
+    </div>
+    <div class="d-flex align-items-center my-4 py-2">
+      <div class="line"></div>
+      <span class="space-nowrap">O inicia sesión</span>
+      <div class="line"></div>
+    </div>
+    <div class="social-login">
+      <ul>
+        <li>
+          <a (click)="signInWithFB()" class="facebook">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a (click)="signInWithGoogle()" class="google">
+            <i class="fa fa-google" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" class="instagram">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

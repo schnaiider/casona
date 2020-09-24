@@ -1,0 +1,61 @@
+<form [formGroup]="newUser" *ngIf="newUserFlag">
+  <div class="signin-block">
+    <a href="javascript:void(0);" class="close-modal" (click)="close()">
+      <img src="../../../../assets/images/close-icon.svg" class="img-fluid" alt="">
+    </a>
+    <img src="../../../../assets/images/login/bg-login.png" class="img-fluid login-bg" alt="">
+    <div class="form-group">
+      <input formControlName="name" type="text" id="name" class="form-control" placeholder="Nomes" pInputText>
+    </div>
+    <div class="form-group">
+      <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Apelidos" pInputText>
+    </div>
+    <div class="form-group">
+      <input formControlName="email" type="text" class="form-control" id="email" placeholder="E-mail" pInputText>
+    </div>
+    <div class="form-group">
+      <input id="mask-telefone" type="text" class="form-control" placeholder="Telefone" formControlName="phone" telefone #telefone [textMask]="{mask: MASKS.telefone.textMaskFunction(telefone.value)}">
+    </div>
+    <div class="form-group sh-password">
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="password" pInputText>
+      <a href="javascript:void(0);"><i class="fa fa-eye"></i></a>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary my-4" (click)="registerNewUser()">Crear cuenta</button>
+      <div>¿Ya tienes cuenta? <a href="javascript:void(0);">Inicia sesión</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+<form [formGroup]="newAddress" *ngIf="newAddressFlag">
+  <div class="signin-block">
+    <a href="javascript:void(0);" class="close-modal" (click)="close()">
+      <img src="../../../../assets/images/close-icon.svg" class="img-fluid" alt="">
+    </a>
+    <img src="../../../../assets/images/login/bg-login.png" class="img-fluid login-bg" alt="">
+    
+    <div class="form-group sh-password">
+      <input id="mask-cep" type="text" class="form-control" placeholder="CEP" formControlName="cep" cep [textMask]="{mask: MASKS.cep.textMask}">
+      <a href="javascript:void(0);" (click)="getCEP()"><i class="fa fa-search"></i></a>
+    </div>
+    <div>insira o número do cep para completar a informaçã </div>
+    <div class="form-group">
+      <input formControlName="commune"  type="text" class="form-control" id="commune" placeholder="Vizinhança" pInputText>
+    </div>
+    <div class="form-group">
+      <input formControlName="address" type="text" id="address" class="form-control" placeholder="Direção" pInputText>
+    </div>
+    <div class="form-group">
+      <input formControlName="number" type="text" class="form-control" id="number" placeholder="Numero" pInputText>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary my-4" (click)="createAddress()">Terminar cadastro</button>
+    </div>
+  </div>
+</form>

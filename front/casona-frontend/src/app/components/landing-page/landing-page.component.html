@@ -1,0 +1,156 @@
+
+<!-- Banner -->
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="../../../assets/images/banner/1.jpg" alt="">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="../../../assets/images/banner/2.jpg" alt="">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="../../../assets/images/banner/3.jpg" alt="">
+    </div>
+  </ng-template>
+</ngb-carousel>
+<!--  -->
+
+
+<!-- Category -->
+<section class="category-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="list">
+          <div class="d-flex">
+            <h5>Pizzas e calzones</h5>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-md-4 d-flex" *ngFor="let item of pizzas">
+              <div class="card-box w-100 bg-white card" *ngIf="item.IdProductType === 1">
+                <div class="card-img" style="background-image: url('{{item.UrlImage}}');"></div>
+                <div class="price-box">
+                  <div class="d-flex">
+                    <div class="col-8 pl-2 pr-0">
+                      <!-- drop down -->
+                      <div class="food-size">Tamanho de 35 cm</div>
+                      <!-- drop down -->
+                    </div>
+                    <div class="col-4 pl-0 pr-3 text-right">
+                      <div class="price">R$ {{item.Price}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-details">
+                  <div class="card-body p-0">
+                    <h6>{{item.ProductName}}</h6>
+                    <p>{{item.Description}}</p>
+                  </div>
+                  <div class="add-to-cart">
+                    <button type="button" class="btn btn-secondary" (click)="getItem(item)">Adicionar ao carrinho</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="d-flex">
+            <h5>Refrigerantes</h5>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-md-4 d-flex" *ngFor="let item of bebidas">
+              <div class="card-box w-100 bg-white card" *ngIf="item.IdProductType === 5">
+                <div class="card-img" style="background-image: url('{{item.UrlImage}}');"></div>
+                <div class="price-box">
+                  <div class="d-flex">
+                    <div class="col-8 pl-2 pr-0">
+                      <!-- drop down -->
+                      <div class="food-size">Refrigerante de 2L</div>
+                      <!-- drop down -->
+                    </div>
+                    <div class="col-4 pl-0 pr-3 text-right">
+                      <div class="price">R$ {{item.Price}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-details">
+                  <div class="card-body p-0">
+                    <h6>{{item.ProductName}}</h6>
+                    <p>{{item.Description}}</p>
+                  </div>
+                  <div class="add-to-cart">
+                    <button type="button" class="btn btn-secondary" (click)="getItem(item)">Adicionar ao carrinho</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+      <div class="col-md-3 pl-1">
+        <!-- No Item -->
+        <div class="list" id="no-cart-added" style="display: none;">
+          <div class="d-flex">
+            <h5>Tu orden</h5>
+            <hr>
+          </div>
+          <div class="text-center">
+            <img src="../../../assets/images/empty-cart.png" class="img-fluid my-4" alt="">
+            <p class="text-gray-bold mb-3">Aún no tienes nada en tu orden</p>
+            <p class="text-gray-normal mb-0">Empieza a seleccionar tus productos</p>
+          </div>
+        </div>
+        <!--  -->
+
+        <!-- Order Added -->
+        <div class="cart-box pos-sticky">
+          <div class="list">
+            <div class="total-amount">
+              <button type="button" class="btn btn-secondary align-items-center d-flex justify-content-between" (click)="endOrder()">
+                <span>Finalizar pedido</span>
+                <span>R$ {{totalPrice}}</span>
+              </button>
+            </div>
+            <div class="d-flex">
+              <h5>Seu pedido</h5>
+              <hr>
+            </div>
+            <div class="item-details" *ngFor= "let item of orderDetail">
+              <div class="item">
+                <div class="align-items-center d-flex justify-content-between">
+                  <span class="sub-title">{{item.OrderItem[0].ProductName}}</span>
+                  <div class="align-items-center d-flex justify-content-between">
+                    <button type="button" class="btn" (click)="minusProduct(item)">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                    <span class="mx-2">{{item.Quantity}}</span>
+                    <button type="button" class="btn" (click)="plusProduct(item)">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <span class="mb-3 small text-muted text-small" *ngIf ="item.IdProductType === 1">{{item.Edge}}, {{item.Composition}}, {{item.Cheese}}</span>
+                <span class="mb-3 small text-muted text-small" *ngIf ="item.IdProductType === 5">Refrigerante 2 litros</span>
+                <p>{{item.Commentary}}</p>
+                <div class="align-items-center d-flex justify-content-between">
+                  <a href="javascript:void(0);" class="update-cart">Modificar</a>
+                  <span class="total-price">R$ {{item.Price}}</span>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!--  -->
