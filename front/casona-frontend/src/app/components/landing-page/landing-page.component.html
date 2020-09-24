@@ -52,7 +52,7 @@
                       <p>{{item.Description}}</p>
                     </div>
                     <div class="add-to-cart">
-                      <button type="button" class="btn btn-secondary" (click)="getItem(item)">Adicionar ao
+                      <button type="button" class="btn btn-secondary" (click)="openCreatePizzaModal()">Adicionar ao
                         carrinho</button>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
 
         <!-- Order Added -->
 
-        <div class="cart-box pos-sticky" id="no-cart-added">
+        <div class="cart-box pos-sticky" id="no-cart-added" *ngIf="orderDetail.length === 0">
           <div class="d-flex">
             <h5>Seu pedido</h5>
             <hr>
@@ -128,7 +128,7 @@
           </div>
         </div>
 
-        <div class="cart-box pos-sticky">
+        <div class="cart-box pos-sticky" *ngIf= "orderDetail.length !== 0">
           <div class="list">
             <div class="total-amount">
               <button type="button" class="btn btn-secondary align-items-center d-flex justify-content-between"

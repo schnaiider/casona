@@ -134,7 +134,7 @@ export class LandingPageComponent implements OnInit {
       this.order.IdDelivery = 1; // viene de cache
       this.order.IdOrder = 0;
       this.order.IdUser = 1; // viene de cache
-
+     
       this.orderService.setCreateOrder(this.order).subscribe(result => {
         this.orderDetail.forEach(element => {
           element.IdOrder = result;
