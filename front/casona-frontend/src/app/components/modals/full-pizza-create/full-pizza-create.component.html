@@ -47,26 +47,20 @@
         </div>
         <div class="d-flex flex-column justify-content-between main-choose-category">
           <div class="mx-auto px-4 category-title text-center">
-            <span>Personaliza tu pizza</span>
-            <h2 class="mb-4">Chicken Garlic</h2>
+            <span>Personalize sua pizza</span>
+            <h2 class="mb-4">{{objProduct.ProductName}}</h2>
           </div>
           <div class="choose-category-block">
             <div class="container-fluid pl-lg-0">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="d-flex main-title">
-                    <h6>Tamaño</h6>
+                    <h6>Tipo de borda</h6>
                     <hr>
                   </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      Familiar
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Mediana
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Extra grande
+                  <div class="btn-combo d-flex flex-row flex-wrap" *ngFor="let item of edge">
+                    <button type="button" class="btn btn-border" (click)="edgeItem(item)">
+                      {{item.Edge}}
                     </button>
                   </div>
                 </div>
@@ -76,212 +70,18 @@
                     <h6>Tipo de masa</h6>
                     <hr>
                   </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
+                  <div class="btn-combo d-flex flex-row flex-wrap" >
                     <button type="button" class="btn btn-border">
-                      Tradicional
+                      Mussarela
                     </button>
                     <button type="button" class="btn btn-border">
-                      Delgada
+                      Requeijão
                     </button>
                     <button type="button" class="btn btn-border">
-                      Borde de queso
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Salsa base</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      Salsa Tomate
+                      Catupiry
                     </button>
                     <button type="button" class="btn btn-border">
-                      Salsa BBQ
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Salsa Alfredo
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Cantidad de salsa</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      Salsa Regular
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Salsa salsa
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Poca salsa
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Extra salsa*
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Cantidad de queso</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      Mozzarella base
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Sin Mozzarella
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Poca Mozzarella
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      Extra Mozzarella*
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Shots</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/shot_bbq3x_1594645812.png" alt="">
-                      Shot de BBQ
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/shot_pesto3x_1594645743.png" alt="">
-                      Shot de Pesto
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/shot_miel3x_1594645660.png" alt="">
-                      Shot de Miel
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Carnes</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/221x_1591368524.png" alt="">
-                      Salchicha Italiana
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/13_1591368328.png" alt="">
-                      Lomito Canadiense
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/211x_1591368554.png" alt="">
-                      Pollo
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/141x_1591368582.png" alt="">
-                      Jamón
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/121x_1591368604.png" alt="">
-                      Tocino
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/16_1591366233.png" alt="">
-                      Pepperoni
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Vegetales</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/202x_1591719321.png" alt="">
-                      Tomate Cherry
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/5_1591368459.png" alt="">
-                      Champiñon
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/31x_1591368476.png" alt="">
-                      Choclo
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/41x_1591368487.png" alt="">
-                      Piña
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/191x_1591368594.png" alt="">
-                      Tomate
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/81x_1591368617.png" alt="">
-                      Pimiento verde
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Premium</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/11_1591368368.png" alt="">
-                      Pulled Pork
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/quesoazul_1600176403.png" alt="">
-                      Queso Azul
-                    </button>
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/notmeat_1600176479.png" alt="">
-                      Not Meat
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="d-flex main-title">
-                    <h6>Quesos especiales</h6>
-                    <hr>
-                  </div>
-                  <div class="btn-combo d-flex flex-row flex-wrap">
-                    <button type="button" class="btn btn-border">
-                      <img src="https://cdn.papajohns.cl/pictures/ingredients/71x_1591368428.png" alt="">
-                      Parmesano y Romano
+                      Cheddar
                     </button>
                   </div>
                 </div>
@@ -291,8 +91,8 @@
 
           <div class="order-place">
             <div class="d-flex justify-content-end total-order mr-4">
-              <h5>$ 39.100</h5>
-              <button type="button" class="btn btn-secondary">Añadir al carrito</button>
+              <h5>R$ {{objProduct.Price}}</h5>
+              <button type="button" class="btn btn-secondary">Finalizar pizza!</button>
             </div>
           </div>
         </div>

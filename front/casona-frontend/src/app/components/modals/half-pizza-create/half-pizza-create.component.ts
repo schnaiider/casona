@@ -1,6 +1,7 @@
   
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Item } from 'src/app/core/models/item';
 
 @Component({
   selector: 'app-half-pizza-create',
@@ -8,6 +9,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./half-pizza-create.component.scss']
 })
 export class HalfPizzaCreateComponent implements OnInit {
+
+  
 
   constructor(
     private _activeModal: NgbActiveModal

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { HalfPizzaCreateComponent } from '../modals/half-pizza-create/half-pizza-create.component';
 import { FullPizzaCreateComponent } from '../modals/full-pizza-create/full-pizza-create.component';
 import { Order, OrderDetailTO, OrderHistoryTO, OrderItemTO } from 'src/app/core/models/order';
 import { Item } from 'src/app/core/models/item';
@@ -19,6 +18,7 @@ export class LandingPageComponent implements OnInit {
     backdrop: 'static',
     keyboard: false,
     windowClass: 'login-modal',
+    size: 'xl',
     centered: true
   }
 
@@ -129,8 +129,6 @@ export class LandingPageComponent implements OnInit {
     // validar que exista direccion en cache.
     if (this.storageService.getAddressInfo().length > 0) {
       // insert order
-      let orderId: number;
-      let orderDetailId: number;
       this.order.IdDelivery = 1; // viene de cache
       this.order.IdOrder = 0;
       this.order.IdUser = 1; // viene de cache
@@ -155,8 +153,12 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
-  openCreatePizzaModal() {
-    this._modalService.open(HalfPizzaCreateComponent, this.modalOption);
-   
+  openCreatePizzaModal(item: Item) {
+    const modalRef =  this._modalService.open(FullPizzaCreateComponent, this.modalOption);
+    modalRef.componentInstance.objProduct = item;
+    modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+      
+    });
   }
+
 }

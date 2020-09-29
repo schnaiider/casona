@@ -221,6 +221,7 @@ div {
 
 .font-12 {
   font-size: 12px;
+
   span,
   a,
   div,
@@ -243,9 +244,7 @@ div {
     -moz-appearance: none;
     -webkit-appearance: none;
     z-index: -1;
-    position: absolute;
-    left: -10px;
-    top: -8px;
+    @include abs-pos(-8px, auto, auto, -10px);
     display: block;
     margin: 0;
     border-radius: 50%;
@@ -254,7 +253,7 @@ div {
     box-shadow: none;
     outline: none;
     opacity: 0;
-    transform: scale(1);
+    @include transform(scale(1));
     pointer-events: none;
     transition: opacity 0.3s, transform 0.2s;
 
@@ -352,9 +351,7 @@ div {
     &::after {
       content: "";
       display: block;
-      position: absolute;
-      top: 5px;
-      left: 1px;
+      @include abs-pos(5px, auto, auto, 1px);
       width: 10px;
       height: 5px;
       border: solid 2px transparent;
@@ -465,12 +462,10 @@ div {
           .count {
             background-color: $primary;
             border: 2px solid $white;
-            border-radius: 50%;
+            @include border-radius(50%);
             color: $white;
             height: 25px;
-            position: absolute;
-            right: -12px;
-            top: -7px;
+            @include abs-pos(-7px, -12px, auto, auto);
             width: 25px;
             text-align: center;
             line-height: 20px;
@@ -500,19 +495,16 @@ div {
             content: "\f107";
             font-size: 12px;
             color: $text;
-            position: absolute;
-            right: 18px;
-            top: 12px;
+            @include abs-pos(12px, 18px, auto, auto);
           }
         }
 
         ul {
-          position: absolute;
+          @include abs-pos(40px, auto, auto, auto);
           width: 200px;
           box-shadow: 0 2px 28px 0 rgba($color: $black, $alpha: 0.06);
           @include border-radius(5px);
           overflow: hidden;
-          top: 40px;
           opacity: 0;
           @include transform(translateY(-2em));
           visibility: hidden;
@@ -537,11 +529,9 @@ div {
 
               &:before {
                 content: '';
-                position: absolute;
+                @include abs-pos(0, auto, auto, 0);
                 width: 0px;
                 height: 40px;
-                left: 0px;
-                top: 0px;
                 bottom: 0px;
                 @include transition(all 0.3s ease 0s);
                 background: #2d7bb8;
@@ -574,33 +564,28 @@ div {
     .menu-trigger {
       cursor: pointer;
       display: block;
-      position: absolute;
-      top: 0;
+      @include abs-pos(0, 40px, auto, auto);
       width: 32px;
       height: 40px;
       text-indent: -9999em;
       z-index: 99;
-      right: 40px;
       display: none;
 
       span {
         @include transition(all 0.4s);
         background-color: $text;
         display: block;
-        position: absolute;
+        @include abs-pos(16px, auto, auto, 0);
         width: 30px;
         height: 2px;
-        left: 0;
-        top: 16px;
 
         &:before {
           @include transition(all 0.4s);
           background-color: $text;
           display: block;
-          position: absolute;
+          @include abs-pos(-10px, auto, auto, 0);
           width: 30px;
           height: 2px;
-          left: 0;
           background-color: $text;
           width: 75%;
           content: "";
@@ -608,7 +593,6 @@ div {
           -ms-transform-origin: 33% 100%;
           -webkit-transform-origin: 33% 100%;
           transform-origin: 33% 100%;
-          top: -10px;
           z-index: 10;
         }
 
@@ -616,10 +600,9 @@ div {
           @include transition(all 0.4s);
           background-color: $text;
           display: block;
-          position: absolute;
+          @include abs-pos(10px, auto, auto, 0);
           width: 30px;
           height: 2px;
-          left: 0;
           background-color: $text;
           width: 75%;
           content: "";
@@ -627,7 +610,6 @@ div {
           -ms-transform-origin: 33% 0;
           -webkit-transform-origin: 33% 0;
           transform-origin: 33% 0;
-          top: 10px;
         }
       }
     }
@@ -699,24 +681,14 @@ div {
 
 
 /* Login */
-.signin-block {
-  display: block;
+.signin-block,
+.content-modal {
   position: relative;
-  // border: 1px solid $border;
-  padding: 0 15px 15px;
-  margin: 0 10px 10px;
-
-  .login-bg {
-    height: 120px;
-    display: block;
-    margin: 0 auto 30px;
-  }
 
   .close-modal {
-    position: absolute;
-    right: 0px;
-    top: 8px;
+    @include abs-pos(8px, 0, auto, auto);
     opacity: 0.75;
+    z-index: 1;
 
     &:hover,
     &:focus,
@@ -727,6 +699,26 @@ div {
     img {
       height: 14px;
     }
+  }
+}
+
+.content-modal {
+  .close-modal {
+    right: 7px;
+    top: 5px;
+  }
+}
+
+.signin-block {
+  display: block;
+  position: relative;
+  padding: 0 15px 15px;
+  margin: 0 10px 10px;
+
+  .login-bg {
+    height: 120px;
+    display: block;
+    margin: 0 auto 30px;
   }
 
   .form-group {
@@ -757,9 +749,7 @@ div {
       }
 
       a {
-        position: absolute;
-        right: 18px;
-        top: 12px;
+        @include abs-pos(12px, 18px, auto, auto);
       }
     }
   }
@@ -896,6 +886,7 @@ div {
   align-items: center;
   text-align: left;
   outline: none;
+  user-select: none;
 
   &:hover,
   &:focus,
@@ -903,6 +894,13 @@ div {
   &.active {
     border: 1px solid $secondary;
     outline: none;
+  }
+
+  img{
+    width: 20px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
   }
 
   .icon {
@@ -928,6 +926,109 @@ div {
   }
 }
 
+.main-choose-category {
+  justify-content: center;
+  max-height: 600px;
+  margin: auto;
+  padding: 0;
+  .bg-main-pizz{
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 600px;
+    width: 100%;
+  }
+
+  .category-title{
+    span{
+      border-bottom: 1px solid $border;
+      color: $text;
+      padding: 0 10px 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .choose-category-block {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    max-height: 365px;
+  }
+
+  .order-place {
+    border-top: 1px solid rgba($color: $black, $alpha: 0.07);
+    @include abs-pos(auto, 18px, 20px, auto);
+    width: 100%;
+    padding-top: 20px;
+  }
+}
+.stepper{
+  @include abs-pos(-65px, auto, auto, 50%);
+  @include transform(translateX(-50%));
+  width: 310px;
+  .step{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .btn-step{
+      background-color: $white;
+      border-radius: 50%;
+      color: $text;
+      font-size: 16px;
+      font-weight: 600;
+      height: 30px;
+      padding: 20px;
+      position: relative;
+      user-select: none;
+      width: 30px;
+      border: 2px solid $border;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i{
+        display: none;
+      }
+      span{
+        display: block;
+      }
+      &:after{
+        content: "";
+        @include abs-pos(50%, auto, auto, 100%);
+        width: 0;
+        height: 4px;
+        background: #b0e0cc;
+        @include transition(width 500ms);
+        margin-left: 2px;
+        z-index: -1;
+      }
+      &.active{
+        background-color: $secondary;
+        border-color: #b0e0cc;
+        color: $white;
+        span{
+          display: none
+        }
+        i{
+          display: block;
+          font-size: 20px;
+        }
+        &:after{
+          width: 100%;
+        }
+      }
+    }
+    &:last-child{
+      .btn-step{
+        &::after{
+          content: none;
+        }
+      }
+    }
+  }
+}
+.back-arrow-step{
+  @include abs-pos(-30px, auto, auto, 15px);
+}
 /* */
 
 /* Banner */
@@ -1000,6 +1101,32 @@ div {
         border-bottom: 0;
       }
     }
+  }
+}
+
+.main-title {
+  h6 {
+    margin-bottom: 10px;
+    margin-right: 15px;
+    white-space: nowrap;
+    line-height: 24px;
+  }
+
+  hr {
+    width: 100%;
+  }
+}
+
+.btn-combo {
+  .btn {
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+    color: #717171;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: auto;
   }
 }
 
@@ -1199,6 +1326,7 @@ div {
 }
 
 .total-order {
+
   h5,
   span {
     line-height: 50px;
@@ -1472,10 +1600,24 @@ Media ============ */
       display: block !important;
     }
   }
-}
-
-.logo-img {
-  fill: #f00;
+  .main-choose-category{
+    .bg-main-pizz{
+      height: 150px;
+    }
+    .choose-category-block{
+      max-height: 350px;
+    }
+    .order-place{
+      position: static;
+    }
+  }
+  .stepper{
+    width: 300px;
+  }
+  .back-arrow-step{
+    top: -15px;
+    left: 30px;
+  }
 }
 
 @media (min-width: 992px) {
